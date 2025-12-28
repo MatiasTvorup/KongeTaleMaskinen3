@@ -1,14 +1,16 @@
 <script setup lang="ts">
-  import t2024 from './taler/2024.ts';
-  console.log(t2024);
+  import t2023 from './taler/2023.ts';
+
+  import KT3Utils from './KT3Utils.ts';
+
+const count2023 = KT3Utils.count(KT3Utils.cleanString(t2023));
 </script>
 
+
 <template>
-  <h1>You did it!</h1>
-  <input type="text" placeholder=t2024>
+  <h1>KongeTaleMaskinen3</h1>
   <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
+    {{count2023}}
   </p>
 </template>
 
