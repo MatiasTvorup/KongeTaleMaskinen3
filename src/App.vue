@@ -8,28 +8,21 @@ import Chart, { CategoryScale } from 'chart.js/auto';
 // import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 Chart.register(CategoryScale);
 
-const count2023 = KT3Utils.count(KT3Utils.cleanString(t2023));
+// const count2023 = KT3Utils.countOccurences(KT3Utils.cleanString(t2023));
 
 const chartOptions = {
   responsive: true
-  // responsiveAnimationDuration: 0,
-  // maintainAspectRatio: false,
-  // title: {
-  //   display: true,
-  //   text: "Outstanding"
-  // },
-  // cutoutPercentage: 0
 };
 
 const chartData = ref({
-  labels: ['January', 'February', 'March', 'April', 'May'],
+  labels: KT3Utils.timeline(),
   datasets: [{ label: 'Ratings', data: [1, 2, 3, 4, 5], backgroundColor: ['#ff0000', '#ffff00'] }]
 });
 
 function changeData() {
   chartData.value = {
-    labels: ['January', 'February', 'March', 'April', 'May'],
-    datasets: [{ label: 'Ratings', data: [4, 5, 6, 73, 3], backgroundColor: ['#ff0000', '#ffff00'] }]
+    labels: KT3Utils.timeline(),
+    datasets: [{ label: 'danmark', data: KT3Utils.wordTimeLine(['danmark', 'danmarks']), backgroundColor: ['#ff0000', '#ffff00'] }]
   }
 }
 
@@ -51,12 +44,8 @@ Færøerne - 1,5
 
 <template>
   <h1>KongeTaleMaskinen3</h1>
-  <p>{{ chartData.datasets[0]?.data }}</p>
   <button @click="changeData">Change</button>
   <Bar :data=chartData :options=chartOptions></Bar>
-  <p>
-    {{ count2023 }}
-  </p>
 </template>
 
 <style scoped></style>
