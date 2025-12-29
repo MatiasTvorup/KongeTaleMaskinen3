@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import t2023 from './taler/2023.ts';
+
+import Graph from "./Graph.vue";
 
 import KT3Utils from './KT3Utils.ts';
 import { Bar } from 'vue-chartjs';
@@ -11,7 +12,19 @@ Chart.register(CategoryScale);
 // const count2023 = KT3Utils.countOccurences(KT3Utils.cleanString(t2023));
 
 const chartOptions = {
-  responsive: true
+  responsive: true,
+  annotation: {
+    annotations: [
+      {
+        type: 'line',
+        mode: 'horizontal',
+        scaleID: 'y-axis-0',
+        value: '2',
+        borderColor: '#tomato',
+        borderWidth: 1
+      }],
+    drawTime: "afterDraw"
+  }
 };
 
 const chartData = ref({
@@ -39,11 +52,14 @@ Færøerne - 1,5
 
 */
 
+const msg = "data";
+
 </script>
 
 
 <template>
   <h1>KongeTaleMaskinen3</h1>
+  <Graph :linked-data="msg" />
   <button @click="changeData">Change</button>
   <Bar :data=chartData :options=chartOptions></Bar>
 </template>

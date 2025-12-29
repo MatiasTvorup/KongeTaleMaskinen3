@@ -135,37 +135,7 @@ module KT3Utils {
     }
 
 
-    // export const data2024 = countOccurences(cleanString(t2024))
-    // export const data2023 = countOccurences(cleanString(t2023))
-    // export const data2022 = countOccurences(cleanString(t2022))
-    // export const data2021 = countOccurences(cleanString(t2021))
-    // export const data2020 = countOccurences(cleanString(t2020))
-    // export const data2019 = countOccurences(cleanString(t2019))
-    // export const data2018 = countOccurences(cleanString(t2018))
-    // export const data2017 = countOccurences(cleanString(t2017))
-    // export const data2016 = countOccurences(cleanString(t2016))
-    // export const data2015 = countOccurences(cleanString(t2015))
-    // export const data2014 = countOccurences(cleanString(t2014))
-    // export const data2013 = countOccurences(cleanString(t2013))
-    // export const data2012 = countOccurences(cleanString(t2012))
-    // export const data2011 = countOccurences(cleanString(t2011))
-    // export const data2010 = countOccurences(cleanString(t2010))
-    // export const data2009 = countOccurences(cleanString(t2009))
-    // export const data2008 = countOccurences(cleanString(t2008))
-    // export const data2007 = countOccurences(cleanString(t2007))
-    // export const data2006 = countOccurences(cleanString(t2006))
-    // export const data2005 = countOccurences(cleanString(t2005))
-    // export const data2004 = countOccurences(cleanString(t2004))
-    // export const data2003 = countOccurences(cleanString(t2003))
-    // export const data2002 = countOccurences(cleanString(t2002))
-    // export const data2001 = countOccurences(cleanString(t2001))
-    // export const data2000 = countOccurences(cleanString(t2000))
-    // export const data1999 = countOccurences(cleanString(t1999))
-    // export const data1998 = countOccurences(cleanString(t1998))
-
-
     export function wordTimeLine(words: string[]): Array<number> {
-        console.log(words);
         let wordOccurence: Array<number> = [];
 
         for (let year = 0; year <= 2024 - 1998; year++) {
