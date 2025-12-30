@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+let props = defineProps(
+    {
+        defaultValue: { type: String }
+    }
+);
+
 const emit = defineEmits(['wordsChanged', 'cutoffChanged'])
 
 function wordInputChanged(e) {
@@ -8,7 +14,7 @@ function wordInputChanged(e) {
 }
 
 function cutoffInputChanged(e) {
-    emit('wordsChanged', e.target.value);
+    emit('cutoffChanged', e.target.value);
 }
 
 </script>
@@ -16,7 +22,7 @@ function cutoffInputChanged(e) {
 
 <template>
     <div>
-        <input @input="wordInputChanged" placeholder="Words to count">
+        <input text="props.defaultValue" @input="wordInputChanged" placeholder="Words to count">
         <input @input="cutoffInputChanged" type="number" step="0.5" placeholder="Cutoff Value">
     </div>
 

@@ -127,14 +127,6 @@ module KT3Utils {
         ]
     }
 
-    export function totalWordCount() {
-        let wordMap = new Map<number, string>();
-        for (let year = 0; year <= 2024 - 1998; year++) {
-            wordMap.set(year, "hej");
-        }
-    }
-
-
     export function wordTimeLine(words: string[]): Array<number> {
         let wordOccurence: Array<number> = [];
 
@@ -146,7 +138,7 @@ module KT3Utils {
             for (let word of words) {
                 word = word.toUpperCase();
                 if (!occurences.has(word)) {
-                    break;
+                    continue;
                 }
                 count = count + occurences.get(word)!;
             }

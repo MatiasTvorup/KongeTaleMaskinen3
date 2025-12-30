@@ -24,7 +24,7 @@ Færøerne - 1,5
 let words = ref([""]);
 let count = ref(1);
 
-let dataList = ref(new Map<Number, {
+let dataList = ref(new Map<number, {
   words: Array<string>,
   cutoff: number
 }>)
@@ -32,10 +32,12 @@ let dataList = ref(new Map<Number, {
 
 function onMore() {
   count.value++;
+  dataList.value.set(count.value, { words: [], cutoff: 0 });
 }
 
 function onLess() {
   if (count.value <= 1) return;
+  dataList.value.delete(count.value);
   count.value--;
 }
 
@@ -57,6 +59,8 @@ function onCutoffInputChanged(cutoffValue: number, index: number) {
   dataList.value.set(index, temp);
 }
 
+dataList.value.set(1, { words: ['danmark', 'danmarks'], cutoff: 7.5 });
+
 </script>
 
 
@@ -68,10 +72,10 @@ function onCutoffInputChanged(cutoffValue: number, index: number) {
     <Button @click="onLess">Less</Button>
   </div>
 
-  <Input v-for="i in count" @words-changed="onWordInputChanged($event, i)"
-    @cutoff-changed="onCutoffInputChanged($event, i)" />
+  <Input v-for="[key, value] in dataList" :key="key" @words-changed="onWordInputChanged($event, key)"
+    @cutoff-changed="onCutoffInputChanged($event, key)" :default-value=value.words[0] />
 
-  <Graph v-for="[key, value] in dataList" :words="value.words" :cutoff="value.cutoff" />
+  <Graph v-for="[key, value] in dataList" :key="key" :words="value.words" :cutoff="value.cutoff" />
 </template>
 
 <style scoped></style>
