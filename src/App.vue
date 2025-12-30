@@ -92,8 +92,8 @@ Færøerne - 1,5
   <h1>KongeTaleMaskinen3</h1>
 
   <div>
-    <Button @click="onMore">More</Button>
-    <Button @click="onLess">Less</Button>
+    <button @click="onMore">More</button>
+    <button @click="onLess">Less</button>
   </div>
 
   <Input v-for="[key, value] in dataList" :key="key" @words-changed="onWordInputChanged($event, key)"

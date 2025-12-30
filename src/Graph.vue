@@ -17,6 +17,8 @@ let props = defineProps(
 );
 
 let titles = ref(props.words);
+let percentageOver = ref(0);
+let percentageUnder = ref(0);
 
 const chartOptions = {
     responsive: true,
@@ -77,6 +79,10 @@ watchEffect(() => {
             }
         ]
     };
+
+    let total = over + under;
+    percentageOver.value = over / total * 100;
+    percentageUnder.value = under / total * 100;
 })
 
 const chartData = ref({
@@ -100,11 +106,14 @@ watchEffect(() => {
 
 
 <template>
-    <h2>{{ titles }} : {{ props.cutoff }}</h2>
+    <h2>{{ titles }}</h2>
+    <ul>
+        <li>Over {{ props.cutoff }}: {{ percentageOver.toFixed(2) }}%</li>
+        <li>Under {{ props.cutoff }}: {{ percentageUnder.toFixed(2) }}%</li>
+    </ul>
+
     <div>
-        <p>bar</p>
         <Bar :data=chartData :options=chartOptions></Bar>
-        <p>doughnut</p>
         <Doughnut :data="doughnutData" :options="doughnutOptions" />
     </div>
 </template>
