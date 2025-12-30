@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 let props = defineProps(
     {
@@ -16,13 +16,12 @@ function wordInputChanged(e) {
 function cutoffInputChanged(e) {
     emit('cutoffChanged', e.target.value);
 }
-
 </script>
 
 
 <template>
     <div>
-        <input text="props.defaultValue" @input="wordInputChanged" placeholder="Words to count">
+        <input :text="props.defaultValue" @input="wordInputChanged" placeholder="Words to count">
         <input @input="cutoffInputChanged" type="number" step="0.5" placeholder="Cutoff Value">
     </div>
 

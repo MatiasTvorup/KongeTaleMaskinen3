@@ -130,6 +130,14 @@ module KT3Utils {
     export function wordTimeLine(words: string[]): Array<number> {
         let wordOccurence: Array<number> = [];
 
+        if (words.length == 0) {
+            for (let year = 0; year <= 2024 - 1998; year++) {
+                wordOccurence.push(0);
+            }
+
+            return wordOccurence;
+        }
+
         for (let year = 0; year <= 2024 - 1998; year++) {
             let speech: string = speeches()[year]!;
             let occurences: Map<string, number> = countOccurences(cleanString(speech));

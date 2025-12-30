@@ -5,8 +5,6 @@ import Graph from "./Graph.vue";
 import Input from "./Input.vue"
 import KT3Utils from './KT3Utils';
 
-// import KT3Utils from './KT3Utils.ts';
-
 
 /* 
 Danmark(s) - 7,5
@@ -21,7 +19,6 @@ Færøerne - 1,5
 
 */
 
-let words = ref([""]);
 let count = ref(1);
 
 let dataList = ref(new Map<number, {
@@ -47,8 +44,15 @@ function onWordInputChanged(inputWords: string, index: number) {
   inputWords = KT3Utils.cleanString(inputWords);
   let splitWords: Array<string> = inputWords.split(" ");
 
+  let cleanWords: Array<string> = [];
+  splitWords.forEach((word) => {
+    if (word == "") return;
+    if (word == " ") return;
+    cleanWords.push(word);
+  });
+
   const temp = dataList.value.get(index)!;
-  temp.words = splitWords;
+  temp.words = cleanWords;
   dataList.value.set(index, temp);
 }
 
@@ -60,14 +64,34 @@ function onCutoffInputChanged(cutoffValue: number, index: number) {
 }
 
 dataList.value.set(1, { words: ['danmark', 'danmarks'], cutoff: 7.5 });
+dataList.value.set(2, { words: ['tak'], cutoff: 4.5 });
+dataList.value.set(3, { words: ['Mary'], cutoff: 3.5 });
+dataList.value.set(4, { words: ['Familie', 'Familier'], cutoff: 3.5 });
+dataList.value.set(5, { words: ['Europa'], cutoff: 3.5 });
+dataList.value.set(6, { words: ['Verden'], cutoff: 2.5 });
+dataList.value.set(7, { words: ['Nytår'], cutoff: 2.5 });
+dataList.value.set(8, { words: ['Grønland'], cutoff: 1.5 });
+dataList.value.set(9, { words: ['Færøerne'], cutoff: 1.5 });
 
+/* 
+Danmark(s) - 7,5
+Tak - 4,5
+Mary - 3,5
+Familie(r) - 3,5
+Europa - 3,5
+Verden - 2,5
+Nytår - 2,5
+Grønland - 1,5
+Færøerne - 1,5
+
+*/
 </script>
 
 
 <template>
-  <div>
-    <h1>KongeTaleMaskinen3</h1>
+  <h1>KongeTaleMaskinen3</h1>
 
+  <div>
     <Button @click="onMore">More</Button>
     <Button @click="onLess">Less</Button>
   </div>
