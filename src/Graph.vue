@@ -22,20 +22,9 @@ let percentageUnder = ref(0);
 
 const chartOptions = {
     responsive: true,
+    maintainAspectRatio: true,
     plugins: {
         legend: { display: false, },
-    },
-    annotation: {
-        annotations: [
-            {
-                type: 'line',
-                mode: 'horizontal',
-                scaleID: 'y-axis-0',
-                value: '2',
-                borderColor: '#tomato',
-                borderWidth: 1
-            }],
-        drawTime: "afterDraw"
     }
 };
 
@@ -52,7 +41,8 @@ const doughnutData = ref({
 });
 
 const doughnutOptions = {
-    responsive: true
+    responsive: true,
+    maintainAspectRatio: true
 }
 
 watchEffect(() => {
@@ -104,17 +94,22 @@ watchEffect(() => {
 
 </script>
 
-
 <template>
-    <h2>{{ titles }}</h2>
-    <ul>
-        <li>Over {{ props.cutoff }}: {{ percentageOver.toFixed(2) }}%</li>
-        <li>Under {{ props.cutoff }}: {{ percentageUnder.toFixed(2) }}%</li>
-    </ul>
+    <div class=" bg-gray-100 outline-solid outline-black flex w-5/6 m-4">
+        <div class="w-4/6">
+            <Bar :data=chartData :options=chartOptions></Bar>
+            <div class="w-1/2">
+                <Doughnut :data="doughnutData" :options="doughnutOptions" />
+            </div>
+        </div>
 
-    <div>
-        <Bar :data=chartData :options=chartOptions></Bar>
-        <Doughnut :data="doughnutData" :options="doughnutOptions" />
+        <div class="w-2/6">
+            <h2>{{ titles }}</h2>
+            <ul>
+                <li>Over {{ props.cutoff }}: {{ percentageOver.toFixed(2) }}%</li>
+                <li>Under {{ props.cutoff }}: {{ percentageUnder.toFixed(2) }}%</li>
+            </ul>
+        </div>
     </div>
 </template>
 

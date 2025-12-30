@@ -5,6 +5,8 @@ import Graph from "./Graph.vue";
 import Input from "./Input.vue"
 import KT3Utils from './KT3Utils';
 
+import style from './style.css'
+
 
 /* 
 Danmark(s) - 7,5
@@ -89,17 +91,20 @@ Færøerne - 1,5
 
 
 <template>
-  <h1>KongeTaleMaskinen3</h1>
+  <div class="flex flex-col min-h-screen justify-center items-center bg-gray-300">
 
-  <div>
-    <button @click="onMore">More</button>
-    <button @click="onLess">Less</button>
+    <h1 class="font-bold underline">KongeTaleMaskinen3</h1>
+
+    <!-- <div>
+      <button @click="onMore">More</button>
+      <button @click="onLess">Less</button>
+    </div>
+
+    <Input v-for="[key, value] in dataList" :key="key" @words-changed="onWordInputChanged($event, key)"
+      @cutoff-changed="onCutoffInputChanged($event, key)" :default-value=value.words[0] /> -->
+
+    <Graph v-for="[key, value] in dataList" :key="key" :words="value.words" :cutoff="value.cutoff" />
   </div>
-
-  <Input v-for="[key, value] in dataList" :key="key" @words-changed="onWordInputChanged($event, key)"
-    @cutoff-changed="onCutoffInputChanged($event, key)" :default-value=value.words[0] />
-
-  <Graph v-for="[key, value] in dataList" :key="key" :words="value.words" :cutoff="value.cutoff" />
 </template>
 
 <style scoped></style>
