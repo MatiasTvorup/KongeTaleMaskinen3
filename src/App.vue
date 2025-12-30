@@ -7,20 +7,6 @@ import KT3Utils from './KT3Utils';
 
 import style from './style.css'
 
-
-/* 
-Danmark(s) - 7,5
-Tak - 4,5
-Mary - 3,5
-Familie(r) - 3,5
-Europa - 3,5
-Verden - 2,5
-Nytår - 2,5
-Grønland - 1,5
-Færøerne - 1,5
-
-*/
-
 let count = ref(1);
 
 let dataList = ref(new Map<number, {
@@ -65,26 +51,29 @@ function onCutoffInputChanged(cutoffValue: number, index: number) {
   dataList.value.set(index, temp);
 }
 
-dataList.value.set(1, { words: ['danmark', 'danmarks'], cutoff: 7.5 });
-dataList.value.set(2, { words: ['tak'], cutoff: 4.5 });
-dataList.value.set(3, { words: ['Mary'], cutoff: 3.5 });
-dataList.value.set(4, { words: ['Familie', 'Familier'], cutoff: 3.5 });
-dataList.value.set(5, { words: ['Europa'], cutoff: 3.5 });
-dataList.value.set(6, { words: ['Verden'], cutoff: 2.5 });
-dataList.value.set(7, { words: ['Nytår'], cutoff: 2.5 });
-dataList.value.set(8, { words: ['Grønland'], cutoff: 1.5 });
-dataList.value.set(9, { words: ['Færøerne'], cutoff: 1.5 });
+let id: number = 0;
+
+dataList.value.set(++id, { words: ['danmark', 'danmarks'], cutoff: 7.5 });
+dataList.value.set(++id, { words: ['danmark', 'danmarks'], cutoff: 6.5 });
+dataList.value.set(++id, { words: ['tak'], cutoff: 4.5 });
+dataList.value.set(++id, { words: ['Mary'], cutoff: 3.5 });
+dataList.value.set(++id, { words: ['Familie', 'Familier'], cutoff: 3.5 });
+dataList.value.set(++id, { words: ['Europa'], cutoff: 3.5 });
+dataList.value.set(++id, { words: ['Verden'], cutoff: 2.5 });
+dataList.value.set(++id, { words: ['Nytår'], cutoff: 2.5 });
+dataList.value.set(++id, { words: ['Grønland'], cutoff: 1.5 });
+dataList.value.set(++id, { words: ['Færøerne'], cutoff: 1.5 });
 
 /* 
-Danmark(s) - 7,5
-Tak - 4,5
-Mary - 3,5
-Familie(r) - 3,5
-Europa - 3,5
-Verden - 2,5
-Nytår - 2,5
-Grønland - 1,5
-Færøerne - 1,5
+Mary - 3,5 - 96%
+Europa - 3,5 - 92%
+Nytår - 2,5 - 74%
+Grønland - 1,5 - 70%
+Tak - 4,5 - 66%
+Verden - 2,5 - 66%
+Familie(r) - 3,5 - 59%
+Færøerne - 1,5 - 59%
+Danmark(s) - 7,5 - 51%
 
 */
 </script>
