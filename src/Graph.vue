@@ -2,17 +2,14 @@
 import { ref, watchEffect } from 'vue'
 import KT3Utils from './KT3Utils.ts';
 import { Bar, Doughnut } from 'vue-chartjs';
-// import Chart, { CategoryScale } from 'chart.js/auto';
-
 import { Chart, CategoryScale, ArcElement, Tooltip, Legend } from 'chart.js/auto'
-// import { CategoryScale } from 'chart.js';
 
 Chart.register(CategoryScale, ArcElement, Tooltip, Legend);
 
 let props = defineProps(
     {
         words: { type: Array<string>, required: true },
-        cutoff: { type: Number, required: true }
+        cutoff: { type: Number, required: true },
     }
 );
 

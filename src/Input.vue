@@ -9,11 +9,11 @@ let props = defineProps(
 
 const emit = defineEmits(['wordsChanged', 'cutoffChanged'])
 
-function wordInputChanged(e) {
+function wordInputChanged(e: any) {
     emit('wordsChanged', e.target.value);
 }
 
-function cutoffInputChanged(e) {
+function cutoffInputChanged(e: any) {
     emit('cutoffChanged', e.target.value);
 }
 </script>
